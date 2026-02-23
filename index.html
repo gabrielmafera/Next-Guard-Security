@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexGuard Security | Smart Security Solutions Windhoek, Namibia</title>
+  <meta name="description" content="Professional CCTV, Access Control, Alarm Systems, Fire Detection & Networking installations in Windhoek, Namibia. Certified, insured, trusted by homes and businesses.">
+
+  <!-- FONTS: Montserrat (Headings) + Figtree (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* =========================================
+       DESIGN TOKENS — SINGLE SOURCE OF TRUTH
+    ========================================= */
+    :root {
+      /* Palette */
+      --bg-primary:     #070912;
+      --bg-secondary:   #0D1526;
+      --bg-card:        #131C30;
+      --bg-card-hover:  #182035;
+      --bg-light:       #F4F7FD;
+      --bg-white:       #FFFFFF;
+      --bg-grey:        #EEF2F8;
+
+      /* Accent — Electric Blue (Trust, Technology, Authority) */
+      --accent:         #2563EB;
+      --accent-hover:   #1D4ED8;
+      --accent-glow:    rgba(37, 99, 235, 0.18);
+      --accent-light:   rgba(37, 99, 235, 0.10);
+
+      /* Text */
+      --text-white:     #FFFFFF;
+      --text-silver:    #CBD5E1;
+      --text-muted-dark:#64748B;
+      --text-dark:      #0F172A;
+      --text-dark-body: #334155;
+
+      /* Borders */
+      --border-dark:    rgba(255, 255, 255, 0.08);
+      --border-light:   #E2E8F0;
+
+      /* Layout */
+      --max-width:      1140px;
+      --nav-height:     88px;
+      --section-pad:    120px;
+
+      /* Radii */
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --radius-xl:  24px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.12);
+      --shadow-md:     0 8px 24px rgba(0, 0, 0, 0.18);
+      --shadow-lg:     0 20px 48px rgba(0, 0, 0, 0.24);
+      --shadow-accent: 0 8px 28px rgba(37, 99, 235, 0.40);
+      --shadow-accent-hover: 0 12px 36px rgba(37, 99, 235, 0.50);
+
+      /* Typography */
+      --font-heading: 'Montserrat', -apple-system, sans-serif;
+      --font-body:    'Figtree', -apple-system, sans-serif;
+
+      /* Transitions */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark-body);
+      background-color: var(--bg-white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--text-dark);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* =========================================
+       LAYOUT UTILITIES
+    ========================================= */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: var(--section-pad) 0;
+    }
+
+    .section-pad-sm {
+      padding: 80px 0;
+    }
+
+    .bg-dark {
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .bg-light {
+      background-color: var(--bg-light);
+    }
+
+    .pre-headline {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* =========================================
+       TYPOGRAPHY
+    ========================================= */
+    .h1 { font-size: 62px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+    .h2 { font-size: 46px; font-weight: 800; letter-spacing: -0.01em; }
+    .h3 { font-size: 30px; font-weight: 700; }
+    .h4 { font-size: 22px; font-weight: 700; }
+    .lead { font-size: 19px; line-height: 1.65; }
+
+    .text-white   { color: var(--text-white); }
+    .text-silver  { color: var(--text-silver); }
+    .text-muted   { color: var(--text-muted-dark); }
+    .text-center  { text-align: center; }
+    .text-left    { text-align: left; }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 48px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      cursor: pointer;
+      border: 2px solid transparent;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--text-white);
+      box-shadow: var(--shadow-accent);
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-accent-hover);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-white);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      background: rgba(7, 9, 18, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .nav-logo .accent { color: var(--accent); }
+    .nav-logo .white  { color: var(--text-white); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--text-silver);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-white); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .nav-phone {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-phone i { font-size: 13px; }
+    .nav-cta {
+      padding: 11px 28px;
+      font-size: 13px;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      color: var(--text-white);
+      font-size: 22px;
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content { display: flex; flex-direction: column; gap: 28px; }
+
+    .hero-heading {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: var(--text-white);
+    }
+
+    .hero-heading .accent-word { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--text-silver);
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badges {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-silver);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge i {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-img-frame {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 60px rgba(37, 99, 235, 0.18);
+      aspect-ratio: 4/5;
+    }
+
+    .hero-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-img-frame::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 2px solid var(--accent);
+      border-radius: 28px;
+      opacity: 0.3;
+      z-index: 0;
+      transform: rotate(2deg);
+      pointer-events: none;
+    }
+
+    .hero-live-badge {
+      position: absolute;
+      bottom: 28px;
+      left: -20px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+      z-index: 2;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22C55E;
+      flex-shrink: 0;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+      50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    }
+
+    .live-badge-text { font-size: 13px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+    .live-badge-text span { display: block; font-weight: 400; font-size: 11px; color: var(--text-muted-dark); }
+
+    .hero-stats-card {
+      position: absolute;
+      top: 32px;
+      right: -24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-lg);
+      z-index: 2;
+    }
+
+    .hero-stats-card .stat-number {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .hero-stats-card .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-silver);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* =========================================
+       SERVICES SECTION
+    ========================================= */
+    .section-header {
+      max-width: 640px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+
+    .section-header p {
+      color: var(--text-dark-body);
+      margin-top: 16px;
+      font-size: 18px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon i { font-size: 24px; color: var(--accent); }
+
+    .service-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+
+    .service-card p { font-size: 15px; line-height: 1.65; color: var(--text-dark-body); flex-grow: 1; }
+
+    .service-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .service-card:hover .service-link { gap: 10px; }
+
+    /* =========================================
+       WHY CHOOSE US
+    ========================================= */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-image-wrap { position: relative; }
+
+    .why-img {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .why-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent), transparent);
+      opacity: 0.15;
+      z-index: -1;
+      transform: rotate(-2deg);
+    }
+
+    .why-content { display: flex; flex-direction: column; gap: 32px; }
+
+    .why-intro p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-silver);
+      margin-top: 16px;
+    }
+
+    .why-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .why-item { display: flex; align-items: flex-start; gap: 16px; }
+
+    .why-check {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-check i { color: var(--accent); font-size: 14px; }
+
+    .why-item-text h4 { font-size: 17px; font-weight: 700; color: var(--text-white); margin-bottom: 4px; }
+
+    .why-item-text p { font-size: 15px; color: var(--text-silver); line-height: 1.6; }
+
+    /* =========================================
+       WHO WE SERVE
+    ========================================= */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .client-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .client-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .client-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .client-icon i { font-size: 20px; color: var(--accent); }
+
+    .client-card h4 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+
+    .client-card p { font-size: 13px; color: var(--text-dark-body); line-height: 1.4; }
+
+    /* =========================================
+       HOW IT WORKS
+    ========================================= */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), rgba(37, 99, 235, 0.2));
+      z-index: 0;
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-accent);
+      flex-shrink: 0;
+    }
+
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--text-white);
+    }
+
+    .process-step h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); }
+
+    .process-step p { font-size: 15px; color: var(--text-dark-body); line-height: 1.65; }
+
+    /* =========================================
+       TESTIMONIALS
+    ========================================= */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(37, 99, 235, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-stars { display: flex; gap: 4px; }
+    .testimonial-stars i { color: var(--accent); font-size: 16px; }
+
+    .testimonial-text { font-size: 16px; line-height: 1.7; color: var(--text-silver); font-style: italic; flex-grow: 1; }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .testimonial-avatar i { font-size: 20px; color: var(--accent); }
+
+    .testimonial-name { font-weight: 700; font-size: 15px; color: var(--text-white); }
+
+    .testimonial-title { font-size: 13px; color: var(--text-muted-dark); }
+
+    /* =========================================
+       FINAL CTA
+    ========================================= */
+    .final-cta {
+      background: linear-gradient(135deg, var(--bg-primary) 0%, #0D1A3A 100%);
+      background-image: radial-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(37, 99, 235, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta-inner { position: relative; z-index: 1; }
+
+    .final-cta h2 { font-size: 52px; font-weight: 900; color: var(--text-white); letter-spacing: -0.02em; margin-bottom: 20px; }
+
+    .final-cta p { font-size: 19px; color: var(--text-silver); max-width: 560px; margin: 0 auto 40px; line-height: 1.65; }
+
+    .final-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .final-cta-note { margin-top: 24px; font-size: 13px; color: var(--text-muted-dark); }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      background: #05070F;
+      color: var(--text-muted-dark);
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p { font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 14px; }
+
+    .footer-contact-item i { color: var(--accent); font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul li { margin-bottom: 12px; }
+
+    .footer-col ul li a { font-size: 14px; color: var(--text-muted-dark); transition: color 0.2s; }
+
+    .footer-col ul li a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-dark);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-social { display: flex; gap: 16px; }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted-dark);
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .footer-social a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0; bottom: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      padding: 40px 24px;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 20px;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* =========================================
+       SCROLL ANIMATIONS
+    ========================================= */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-delay-1 { transition-delay: 0.1s; }
+    .fade-delay-2 { transition-delay: 0.2s; }
+    .fade-delay-3 { transition-delay: 0.3s; }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 1100px) {
+      :root { --section-pad: 90px; }
+      .h1, .hero-heading { font-size: 48px; }
+      .h2 { font-size: 38px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --section-pad: 72px; }
+      .h1, .hero-heading { font-size: 38px; }
+      .h2 { font-size: 30px; }
+      .final-cta h2 { font-size: 34px; }
+
+      .nav-links, .nav-phone, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+
+      .hero-grid { grid-template-columns: 1fr; padding: 60px 0; gap: 40px; }
+
+      .hero-visual { order: -1; }
+      .hero-stats-card { right: 0; top: 16px; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-cta-row { flex-direction: column; align-items: flex-start; }
+      .hero-badges { gap: 16px; }
+      .final-cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="mainNav">
+    <div class="container nav-inner">
+
+      <a href="#" class="nav-logo">
+        <span class="accent">NEX</span><span class="white">GUARD</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#process">How It Works</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="tel:+264810000000" class="nav-phone">
+          <i class="fas fa-phone"></i>
+          +264 81 000 0000
+        </a>
+        <a href="#contact" class="btn btn-primary nav-cta">Free Quote</a>
+      </div>
+
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars" id="menuIcon"></i>
+      </button>
+
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#process" onclick="closeMobile()">How It Works</a>
+    <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+    <a href="#contact" onclick="closeMobile()">Get a Quote</a>
+  </div>
+
+
+  <!-- ============================================================
+       HERO — CAPTURE
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-content">
+          <span class="pre-headline">Windhoek's Premier Security Specialists</span>
+
+          <h1 class="hero-heading">
+            Smart Security.<br>
+            <span class="accent-word">Total</span> Peace of Mind.
+          </h1>
+
+          <p class="hero-sub">
+            Professional installation of CCTV, Access Control, Alarm Systems, Fire Detection, Networking & Intercom Solutions — for homes, businesses, and estates across Namibia.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#contact" class="btn btn-primary">
+              <i class="fas fa-calendar-check"></i>
+              Book Free Site Assessment
+            </a>
+            <a href="#services" class="btn btn-outline">
+              View Our Services
+            </a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <i class="fas fa-certificate"></i>
+              Certified Technicians
+            </div>
+            <div class="hero-badge">
+              <i class="fas fa-shield-halved"></i>
+              Fully Insured
+            </div>
+            <div class="hero-badge">
+              <i class="fas fa-clock"></i>
+              24/7 Support
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+
+          <!-- Updated Hero Stat: 24/7 Visibility -->
+          <div class="hero-stats-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Visibility</div>
+          </div>
+
+          <div class="hero-img-frame">
+            <img
+              src="https://ik.imagekit.io/puuz06/View-Security-Cameras-Android-App.jpg"
+              alt="Professional CCTV installation by NexGuard Security"
+              loading="eager"
+            >
+          </div>
+
+          <div class="hero-live-badge">
+            <div class="live-dot"></div>
+            <div class="live-badge-text">
+              Live Monitoring
+              <span>Remote access from anywhere</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES — DIRECT
+  ============================================================ -->
+  <section class="section-pad bg-light" id="services">
+    <div class="container">
+
+      <div class="section-header fade-in">
+        <span class="pre-headline">What We Do</span>
+        <h2 class="h2">Comprehensive Security Solutions</h2>
+        <p>From a single camera to a fully integrated estate security system — we design, supply, and install it all with precision and care.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fas fa-video"></i></div>
+          <h3>CCTV Surveillance</h3>
+          <p>HD and 4K cameras with remote viewing from your smartphone, motion alerts, night vision, and cloud or local recording.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-1">
+          <div class="service-icon"><i class="fas fa-fingerprint"></i></div>
+          <h3>Access Control</h3>
+          <p>Biometric fingerprint readers, keypad entry, card and tag systems — control exactly who enters your property and when.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-2">
+          <div class="service-icon"><i class="fas fa-bell-slash"></i></div>
+          <h3>Alarm Systems</h3>
+          <p>Motion sensors, door and window sensors, glass-break detection, and remote arm/disarm from your phone. Deters threats before they escalate.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-3">
+          <div class="service-icon"><i class="fas fa-fire-extinguisher"></i></div>
+          <h3>Fire Detection</h3>
+          <p>Smoke and heat detectors, alarm panels, and compliance-ready installations. Protect your building and meet safety regulations.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Data Networking</h3>
+          <p>Structured cabling, server rack installation, network setup, and office internet infrastructure. Clean, organized, and future-ready.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-1">
+          <div class="service-icon"><i class="fas fa-phone-volume"></i></div>
+          <h3>Intercom Systems</h3>
+          <p>Audio and video intercom solutions for homes, estates, offices, and apartment complexes. Verify before you grant access.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-2">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+          <h3>Car Cameras</h3>
+          <p>Front and rear HD dash cameras for accident evidence and insurance protection. Stay safe and fully documented on every journey.</p>
+          <a href="#contact" class="service-link">Enquire <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-in fade-delay-3" style="background: var(--accent); border-color: var(--accent); justify-content: center; align-items: flex-start;">
+          <div class="service-icon" style="background: rgba(255,255,255,0.2);">
+            <i class="fas fa-shield-halved" style="color: #fff;"></i>
+          </div>
+          <h3 style="color: #fff;">Full Security Package</h3>
+          <p style="color: rgba(255,255,255,0.85);">CCTV + Alarms + Access Control. Fully integrated, controlled from one platform. Ask us about bundled solutions.</p>
+          <a href="#contact" class="service-link" style="color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4);">Get Package Quote <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHY CHOOSE US — DIRECT
+  ============================================================ -->
+  <section class="section-pad bg-dark" id="about">
+    <div class="container">
+      <div class="why-grid">
+
+        <div class="why-image-wrap fade-in">
+          <img
+            src="https://ik.imagekit.io/puuz06/915b7731-2614-4ea3-a182-cd30f4954270.jpg"
+            alt="NexGuard Security professional technician"
+            class="why-img"
+            loading="lazy"
+          >
+          <!-- Experience badge removed as per request -->
+        </div>
+
+        <div class="why-content fade-in fade-delay-1">
+
+          <div class="why-intro">
+            <span class="pre-headline">Why NexGuard</span>
+            <h2 class="h2 text-white">The NexGuard Commitment</h2>
+            <p>We don't just install systems. We build long-term security relationships — engineered for your property, backed by real expertise, and supported for years to come.</p>
+          </div>
+
+          <div class="why-list">
+
+            <div class="why-item">
+              <div class="why-check"><i class="fas fa-check"></i></div>
+              <div class="why-item-text">
+                <h4>Certified & Experienced Technicians</h4>
+                <p>Every installation is carried out by qualified professionals with years of hands-on experience in the field.</p>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="why-check"><i class="fas fa-check"></i></div>
+              <div class="why-item-text">
+                <h4>Clean, Professional Installations</h4>
+                <p>No exposed wires, no shortcuts. We take pride in clean cable management and a finished result that looks as good as it performs.</p>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="why-check"><i class="fas fa-check"></i></div>
+              <div class="why-item-text">
+                <h4>Remote Monitoring From Anywhere</h4>
+                <p>View your cameras, arm your alarm, and control your access system directly from your smartphone — at home or abroad.</p>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="why-check"><i class="fas fa-check"></i></div>
+              <div class="why-item-text">
+                <h4>High-Quality Equipment Only</h4>
+                <p>We source only trusted, commercial-grade brands — no cheap, unreliable hardware that fails when you need it most.</p>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="why-check"><i class="fas fa-check"></i></div>
+              <div class="why-item-text">
+                <h4>Transparent, Competitive Pricing</h4>
+                <p>Detailed quotes with no hidden costs. You know exactly what you're getting before we begin.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHO WE SERVE
+  ============================================================ -->
+  <section class="section-pad" id="clients">
+    <div class="container">
+
+      <div class="section-header fade-in">
+        <span class="pre-headline">Our Clients</span>
+        <h2 class="h2">Who We Work With</h2>
+        <p>From single-family homes to large commercial estates — we have the expertise and equipment to secure any property.</p>
+      </div>
+
+      <div class="clients-grid">
+
+        <div class="client-card fade-in">
+          <div class="client-icon"><i class="fas fa-house"></i></div>
+          <div>
+            <h4>Homeowners</h4>
+            <p>Protect your family and property</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-1">
+          <div class="client-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <h4>Offices & Businesses</h4>
+            <p>Secure your workplace and assets</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-2">
+          <div class="client-icon"><i class="fas fa-tree"></i></div>
+          <div>
+            <h4>Estates & Complexes</h4>
+            <p>Perimeter, access & intercom systems</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-3">
+          <div class="client-icon"><i class="fas fa-hard-hat"></i></div>
+          <div>
+            <h4>Property Developers</h4>
+            <p>Security built in from day one</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in">
+          <div class="client-icon"><i class="fas fa-warehouse"></i></div>
+          <div>
+            <h4>Warehouses</h4>
+            <p>Surveillance for large floor plans</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-1">
+          <div class="client-icon"><i class="fas fa-store"></i></div>
+          <div>
+            <h4>Retail Stores</h4>
+            <p>Loss prevention and entry control</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-2">
+          <div class="client-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <h4>Schools & Institutions</h4>
+            <p>Safe environments for education</p>
+          </div>
+        </div>
+
+        <div class="client-card fade-in fade-delay-3">
+          <div class="client-icon"><i class="fas fa-church"></i></div>
+          <div>
+            <h4>Places of Worship</h4>
+            <p>Discreet, respectful installations</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       HOW IT WORKS — PROCESS
+  ============================================================ -->
+  <section class="section-pad bg-light" id="process">
+    <div class="container">
+
+      <div class="section-header fade-in">
+        <span class="pre-headline">Our Process</span>
+        <h2 class="h2">Getting Started Is Simple</h2>
+        <p>Four clear steps from first contact to a fully secured property — with zero stress and zero surprises.</p>
+      </div>
+
+      <div class="process-grid">
+
+        <div class="process-step fade-in">
+          <div class="step-circle"><span class="step-number">1</span></div>
+          <div>
+            <h3>Free Site Assessment</h3>
+            <p>We visit your property to understand your specific security needs — no obligation, no pressure.</p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in fade-delay-1">
+          <div class="step-circle"><span class="step-number">2</span></div>
+          <div>
+            <h3>Custom System Design</h3>
+            <p>We design a solution tailored to your property layout, budget, and security priorities.</p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in fade-delay-2">
+          <div class="step-circle"><span class="step-number">3</span></div>
+          <div>
+            <h3>Professional Installation</h3>
+            <p>Our certified team installs your system with precision — clean, efficient, and fully tested before we leave.</p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in fade-delay-3">
+          <div class="step-circle"><span class="step-number">4</span></div>
+          <div>
+            <h3>Ongoing Support</h3>
+            <p>We remain your long-term partner — with 24/7 technical support, maintenance, and system upgrades.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 56px;" class="fade-in">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fas fa-calendar-check"></i>
+          Book My Free Assessment
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TESTIMONIALS — TRUST
+  ============================================================ -->
+  <section class="section-pad bg-dark" id="testimonials">
+    <div class="container">
+
+      <div class="section-header fade-in">
+        <span class="pre-headline">What Our Clients Say</span>
+        <h2 class="h2 text-white">Trusted Across Namibia</h2>
+        <p class="text-silver">Don't take our word for it — here's what the people we protect have to say.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"NexGuard installed CCTV and access control at our office complex. The team was professional, the cabling was spotless, and the remote viewing app works perfectly. Highly recommend to any business in Windhoek."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="testimonial-name">Heinrich van der Merwe</div>
+              <div class="testimonial-title">Business Owner, Windhoek</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in fade-delay-1">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"We had a complete security package done for our estate — cameras, alarm, and gate intercom. Everything integrated into one app. NexGuard exceeded every expectation. The installation was incredibly clean and fast."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="testimonial-name">Patricia Nghipangelwa</div>
+              <div class="testimonial-title">Homeowner, Kleine Kuppe</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in fade-delay-2">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"As a property developer, I need a security partner I can trust on every site. NexGuard delivers every time — competitive pricing, top equipment, and a team that actually knows what they're doing."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="testimonial-name">Daniel Shikongo</div>
+              <div class="testimonial-title">Property Developer, Namibia</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT / FINAL CTA — CONVERT
+  ============================================================ -->
+  <section class="section-pad final-cta" id="contact">
+    <div class="container final-cta-inner fade-in">
+
+      <span class="pre-headline" style="text-align: center; display: block;">Take the First Step</span>
+      <h2>Protect What Matters Most.</h2>
+      <p>Don't wait for a security incident to happen. Book your free, no-obligation site assessment today and let us design the right system for your property.</p>
+
+      <div class="final-cta-btns">
+        <a href="tel:+264810000000" class="btn btn-primary">
+          <i class="fas fa-phone"></i>
+          Call Us Now
+        </a>
+        <a href="mailto:info@nexguard.na" class="btn btn-outline">
+          <i class="fas fa-envelope"></i>
+          Email for a Quote
+        </a>
+      </div>
+
+      <p class="final-cta-note">
+        <i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 6px;"></i>
+        Serving Windhoek and surrounding areas &nbsp;·&nbsp; Free on-site assessments &nbsp;·&nbsp; Quotes within 24 hours
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="logo">
+            <span style="color: var(--accent);">NEX</span><span style="color: var(--text-white);">GUARD</span>
+          </div>
+          <p>Windhoek's trusted security and technology specialists. Precision installations, quality equipment, and long-term support for homes and businesses across Namibia.</p>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+264 81 000 0000</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@nexguard.na</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Windhoek, Namibia</span>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">CCTV Surveillance</a></li>
+            <li><a href="#services">Access Control</a></li>
+            <li><a href="#services">Alarm Systems</a></li>
+            <li><a href="#services">Fire Detection</a></li>
+            <li><a href="#services">Data Networking</a></li>
+            <li><a href="#services">Intercom Systems</a></li>
+            <li><a href="#services">Car Cameras</a></li>
+          </ul>
+        </div>
+
+        <!-- Service Areas -->
+        <div class="footer-col">
+          <h4>Areas We Serve</h4>
+          <ul>
+            <li><a href="#">Windhoek Central</a></li>
+            <li><a href="#">Kleine Kuppe</a></li>
+            <li><a href="#">Olympia</a></li>
+            <li><a href="#">Pioneerspark</a></li>
+            <li><a href="#">Khomasdal</a></li>
+            <li><a href="#">Eros</a></li>
+            <li><a href="#">Surrounding Areas</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Get a Quote</a></li>
+          </ul>
+          <div style="margin-top: 28px;">
+            <p style="font-size: 13px; margin-bottom: 8px; color: #475569;">Mon–Fri: 08:00 – 17:00</p>
+            <p style="font-size: 13px; margin-bottom: 8px; color: #475569;">Sat: 09:00 – 13:00</p>
+            <p style="font-size: 13px; color: var(--accent); font-weight: 600;">24/7 Emergency Support</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 NexGuard Security. All Rights Reserved. Windhoek, Namibia.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // ---- Nav scroll state ----
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ---- Mobile menu ----
+    const toggle  = document.getElementById('mobileToggle');
+    const menu    = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+      menu.classList.remove('open');
+      menuIcon.className = 'fas fa-bars';
+      document.body.style.overflow = '';
+    }
+
+    // ---- Scroll-triggered fade-in animations ----
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ---- Smooth active nav highlight ----
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}`
+          ? 'var(--accent)'
+          : 'var(--text-silver)';
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
